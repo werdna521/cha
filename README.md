@@ -1,6 +1,6 @@
 # Cha
 
-A speech-driven IoT mini car mobile client app
+A speech-driven IoT mini car client app
 
 ## License
 

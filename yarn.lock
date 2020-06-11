@@ -1009,6 +1009,13 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-plugin/-/eslint-plugin-1.1.0.tgz#e42b1bef12d2415411519fd528e64b593b1363dc"
   integrity sha512-W/J0fNYVO01tioHjvYWQ9m6RgndVtbElzYozBq1ZPrHO/iCzlqoySHl4gO/fpCl9QEFjvJfjPgtPMTMlsoq5DQ==
 
+"@react-native-community/voice@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@react-native-community/voice/-/voice-1.1.4.tgz#d4f2fce97ecdfc1cb926633af43e1f463f0dd7ad"
+  integrity sha512-G8G6mzMYcecQMvVh2piEfia8vEVEIkDByQY13Mt/f9z+RhJgKYGTL7oBoFuzDcHGbZBREkl3DH64VGs97B45iA==
+  dependencies:
+    invariant "^2.2.4"
+
 "@types/babel__core@^7.1.0":
   version "7.1.8"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.8.tgz#057f725aca3641f49fc11c7a87a9de5ec588a5d7"

@@ -18,13 +18,17 @@ exports.handler = async (event, context, callback) => {
     );
     console.log('good');
     return callback(null, {
-      status: 200,
-      message: 'Insert successful.',
+      statusCode: 200,
+      body: {
+        message: 'Insert successful.',
+      },
     });
   } catch (e) {
     return callback(null, {
-      status: 400,
-      message: 'Bad request.',
+      statusCode: 400,
+      body: {
+        message: 'Bad request.',
+      },
     });
   }
 };

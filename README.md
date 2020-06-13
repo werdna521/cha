@@ -1,5 +1,7 @@
 # Cha
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9e08180f-050c-4aec-97de-ff331fd3dcb8/deploy-status)](https://app.netlify.com/sites/hopeful-fermat-5f4331/deploys)
+
 A speech-driven IoT mini car client app
 
 ## License

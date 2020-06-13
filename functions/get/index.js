@@ -13,9 +13,9 @@ const algorithm = (x, y, numPoints) => {
 
 exports.handler = async (event, context, callback) => {
   try {
-    const { data } = await axios.get(
-      'https://melissa205.000webhostapp.com/recipe/get.php',
-    );
+    const {
+      data: { data },
+    } = await axios.get('https://melissa205.000webhostapp.com/recipe/get.php');
 
     return {
       statusCode: 200,
@@ -29,7 +29,7 @@ exports.handler = async (event, context, callback) => {
     };
   } catch (e) {
     return {
-      statusCode: 200,
+      statusCode: 400,
       body: JSON.stringify({
         data: 'Bad Request.',
       }),

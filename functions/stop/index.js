@@ -12,7 +12,7 @@ exports.handler = async (event, context, callback) => {
     };
   } catch (e) {
     return {
-      statusCode: 200,
+      statusCode: 400,
       body: JSON.stringify({
         data: 'Bad Request.',
       }),

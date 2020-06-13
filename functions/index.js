@@ -4,7 +4,7 @@ exports.handler = async (event, context, callback) => {
   const { x, y } = JSON.stringify(event.body);
 
   try {
-    const ok = await axios.post(
+    await axios.post(
       'https://melissa205.000webhostapp.com/recipe/post.php',
       {
         x,
@@ -12,7 +12,7 @@ exports.handler = async (event, context, callback) => {
       },
       { 'Content-Type': 'application/json' },
     );
-
+    console.log('good');
     return {
       status: 200,
       message: 'Insert successful.',

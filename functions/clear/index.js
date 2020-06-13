@@ -2,25 +2,14 @@ const axios = require('axios');
 
 exports.handler = async (event, context, callback) => {
   const { x, y } = JSON.parse(event.body);
-  console.log(event);
+
   try {
-    await axios.post(
-      'https://melissa205.000webhostapp.com/recipe/post.php',
-      {
-        x,
-        y,
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-    );
-    console.log('good');
+    await axios.post('https://melissa205.000webhostapp.com/recipe/clear.php');
+
     return {
       statusCode: 200,
       body: JSON.stringify({
-        data: 'Insert successful.',
+        data: 'Delete successful.',
       }),
     };
   } catch (e) {

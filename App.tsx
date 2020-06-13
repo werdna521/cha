@@ -12,48 +12,25 @@
 //   See the License for the specific language governing permissions and
 // limitations under the License.
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import * as eva from '@eva-design/eva';
-import { StyleSheet } from 'react-native';
-import {
-  ApplicationProvider,
-  Layout,
-  Text,
-  Button,
-} from '@ui-kitten/components';
 import * as theme from './custom-theme';
+import { colors } from './utils/variables';
 
-import Voice from '@react-native-community/voice';
+import { StatusBar } from 'react-native';
+import { ApplicationProvider } from '@ui-kitten/components';
+import { NavigationContainer } from '@react-navigation/native';
+import RootNavigator from './navigators/RootNavigator';
 
-const App = () => {
-  const [_text, _setText] = useState('Hello');
-  const [_recording, _setRecording] = useState(false);
-
-  useEffect(() => {
-    Voice.onSpeechStart = (event) => !event.error && _setRecording(true);
-    Voice.onSpeechEnd = (event) => !event.error && _setRecording(false);
-    Voice.onSpeechResults = (event) =>
-      event.value?.length && _setText(event.value[0]);
-  });
-
+const App: React.FC = () => {
   return (
-    <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
-      <Layout style={styles.container}>
-        <Text category="h1">{_text}</Text>
-        <Button onPress={() => !_recording && Voice.start('id')}>
-          {_recording ? 'Recording...' : 'Start'}
-        </Button>
-      </Layout>
+    <ApplicationProvider {...eva} theme={{ ...eva.light, ...theme }}>
+      <StatusBar backgroundColor={colors.black} barStyle="light-content" />
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
     </ApplicationProvider>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default App;

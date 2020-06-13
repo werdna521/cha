@@ -10,7 +10,11 @@ exports.handler = async (event, context, callback) => {
         x,
         y,
       },
-      { 'Content-Type': 'application/json' },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
     );
     console.log('good');
     callback(null, {

@@ -1,10 +1,10 @@
-const db = require('./db');
+const fs = require('fs');
 
 exports.handler = (event, context, callback) => {
   const { x, y } = JSON.stringify(event.body);
-  db.push({ x, y });
+  fs.appendFileSync('data.txt', `${JSON.stringify({ x, y })},`);
   callback(null, {
     status: 200,
-    message: `Insert successful. ${db.get()}`,
+    message: `Insert successful. ${fs.readFileSync('data.txt')}`,
   });
 };

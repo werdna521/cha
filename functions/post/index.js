@@ -17,18 +17,18 @@ exports.handler = async (event, context, callback) => {
       },
     );
     console.log('good');
-    return callback(null, {
+    return  {
       statusCode: 200,
       body: JSON.stringify({
         data: 'Insert successful.'
       })
-    });
+    };
   } catch (e) {
-    return callback(null, {
+    return {
       statusCode: 200,
       body: JSON.stringify({
         data: 'Bad Request.'
       })
-    });
+    };
   }
 };

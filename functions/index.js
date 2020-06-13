@@ -9,15 +9,16 @@ exports.handler = (event, context, callback) => {
       y,
     })
     .then(() => {
-      callback(null, {
+      return {
         status: 200,
         message: 'Insert successful.',
-      });
+      };
     })
     .catch((err) => {
-      callback(null, {
+      console.log(err);
+      return {
         status: 400,
         message: 'Bad Request',
-      });
+      };
     });
 };

@@ -1,16 +1,23 @@
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
-const adapter = new FileSync('db.json');
-const db = low(adapter);
+const axios = require('axios');
 
 exports.handler = (event, context, callback) => {
   const { x, y } = JSON.stringify(event.body);
 
-  db.defaults({ data: [] }).write();
-  db.get('data').push({ x, y }).write();
-
-  callback(null, {
-    status: 200,
-    message: `Insert successful. ${JSON.stringify(db.get('data').value())}`,
-  });
+  axios
+    .post('https://melissa205.000webhostapp.com/recipe/post.php', {
+      x,
+      y,
+    })
+    .then(() => {
+      callback(null, {
+        status: 200,
+        message: 'Insert successful.',
+      });
+    })
+    .catch((err) => {
+      callback(null, {
+        status: 400,
+        message: 'Bad Request',
+      });
+    });
 };

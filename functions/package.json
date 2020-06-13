@@ -1,0 +1,10 @@
+{
+  "name": "functions",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Andrew Cen",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}

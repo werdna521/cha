@@ -1,8 +1,6 @@
 const axios = require('axios');
 
 exports.handler = async (event, context, callback) => {
-  const { x, y } = JSON.parse(event.body);
-
   try {
     await axios.post('https://melissa205.000webhostapp.com/recipe/clear.php');
 

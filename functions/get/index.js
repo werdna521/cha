@@ -1,7 +1,6 @@
 const axios = require('axios');
 
 const algorithm = (x, y, numPoints) => {
-  console.log(JSON.stringify(x), JSON.stringify(y), numPoints);
   let area = 0;
   let j = numPoints - 1;
 

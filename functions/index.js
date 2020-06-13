@@ -1,10 +1,16 @@
-const fs = require('fs');
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('db.json');
+const db = low(adapter);
 
 exports.handler = (event, context, callback) => {
   const { x, y } = JSON.stringify(event.body);
-  fs.appendFileSync('data.txt', `${JSON.stringify({ x, y })},`);
+
+  db.defaults({ data: [] }).write();
+  db.get('data').push({ x, y }).write();
+
   callback(null, {
     status: 200,
-    message: `Insert successful. ${fs.readFileSync('data.txt')}`,
+    message: `Insert successful. ${JSON.stringify(db.get('data').value())}`,
   });
 };

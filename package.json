@@ -17,6 +17,7 @@
     "@react-navigation/native": "^5.5.1",
     "@types/react-native-bluetooth-serial": "^1.0.1",
     "@ui-kitten/components": "^5.0.0",
+    "lowdb": "^1.0.0",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-bluetooth-serial": "^1.0.0-rc1",

@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import React, { useEffect, useState } from 'react';
+import RepositoryFactory from '../repositories/repository.factory';
 import Voice from '@react-native-community/voice';
 import BluetoothSerial from 'react-native-bluetooth-serial';
 
@@ -25,15 +26,33 @@ const languageCode = ['id', 'en', 'zh'];
 
 const Speech: React.FC = () => {
   const [_text, _setText] = useState<string>('Hello');
+  const [_result, _setResult] = useState<string>('');
   const [_recording, _setRecording] = useState<boolean>(false);
   const [_selected, _setSelected] = useState<number>(0);
 
   useEffect(() => {
+    const interval = setInterval(async () => {
+      try {
+        const result = await RepositoryFactory.with('polygon').fetch();
+        const { status, data } = result.data;
+        if (status === 200) {
+          _setResult(`${Math.abs(parseInt(data[data.length - 1].value))}`);
+          await RepositoryFactory.with('polygon').clear();
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }, 5000);
+
     Voice.onSpeechStart = (event) => !event.error && _setRecording(true);
     Voice.onSpeechEnd = (event) => !event.error && _setRecording(false);
     Voice.onSpeechResults = (event) => {
       event.value?.length && _setText(event.value[0]);
       event.value?.length && BluetoothSerial.write(event.value[0]);
+    };
+
+    return () => {
+      clearInterval(interval);
     };
   }, []);
 
@@ -71,6 +90,9 @@ const Speech: React.FC = () => {
       <Layout style={styles.container}>
         <Text category="h3" style={styles.text}>
           {_text}
+        </Text>
+        <Text category="h4" style={styles.text}>
+          {_result}
         </Text>
         <Button onPress={record}>
           {_recording ? 'Recording...' : 'Start'}

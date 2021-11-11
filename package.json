@@ -18,7 +18,7 @@
     "@types/axios": "^0.14.0",
     "@types/react-native-bluetooth-serial": "^1.0.1",
     "@ui-kitten/components": "^5.0.0",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "react": "16.11.0",
     "react-native": "0.62.3",
     "react-native-bluetooth-serial": "^1.0.0-rc1",
